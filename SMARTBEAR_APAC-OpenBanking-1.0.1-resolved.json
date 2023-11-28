@@ -1,0 +1,400 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Open Banking API",
+    "description": "This an example of an Open Banking API. It is an interface to some common financial microservices.",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/SMARTBEAR_APAC/Demo_2011/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/account": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Read - Retrieves Account details",
+        "description": "Enter your account id to receive the latest balance.\n",
+        "operationId": "getBalance",
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "Pass an account ID",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves Account details successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Update - Updates Account details",
+        "description": "Answer few details & we will create account for you at our Bank.\n",
+        "operationId": "updateAccountBalance",
+        "parameters": [
+          {
+            "name": "AccountID",
+            "in": "query",
+            "description": "AccountID",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "FirstName",
+            "in": "query",
+            "description": "FirstName",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LastName",
+            "in": "query",
+            "description": "LastName",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "description": "Email",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Deposit",
+            "in": "query",
+            "description": "Deposit",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Address",
+            "in": "query",
+            "description": "Address",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update Account successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_1"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Create - Creates an Account ID",
+        "description": "Answer few details & we will create account for you at our Bank.\n",
+        "operationId": "createAccount",
+        "parameters": [
+          {
+            "name": "FirstName",
+            "in": "query",
+            "description": "FirstName",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LastName",
+            "in": "query",
+            "description": "LastName",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "description": "Email",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Deposit",
+            "in": "query",
+            "description": "Deposit",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Address",
+            "in": "query",
+            "description": "Address",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Creates Account successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_2"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Delete - Close an Account",
+        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "operationId": "closeAccount",
+        "parameters": [
+          {
+            "name": "AccountID",
+            "in": "query",
+            "description": "Enter your account ID",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete account successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "User id",
+            "example": 7
+          },
+          "name": {
+            "type": "string",
+            "description": "Users first name",
+            "example": "James"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Users last name",
+            "example": "Bond"
+          },
+          "email": {
+            "type": "string",
+            "description": "Users email",
+            "example": "007@JamesBond.com"
+          },
+          "balance": {
+            "type": "number",
+            "description": "Balance",
+            "example": 1000
+          },
+          "address": {
+            "type": "string",
+            "description": "Users address",
+            "example": "Meta"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message",
+            "example": "Thank you for banking with us. Your account details have been updated."
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "User id",
+            "example": 7
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Users first name",
+            "example": "James"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Users last name",
+            "example": "Bond"
+          },
+          "email": {
+            "type": "string",
+            "description": "Users email",
+            "example": "007@JamesBond.com"
+          },
+          "balance": {
+            "type": "number",
+            "description": "Balance",
+            "example": 1000
+          },
+          "address": {
+            "type": "string",
+            "description": "Users address",
+            "example": "Meta"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message",
+            "example": "Thank you for banking with us. Your account details have been retrieved."
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Account id",
+            "example": 7
+          },
+          "message": {
+            "type": "string",
+            "description": "Message",
+            "example": "Thank you for banking with us. Your account has been created at our Bank."
+          }
+        }
+      },
+      "inline_response_200_3": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Account id",
+            "example": 7
+          },
+          "status": {
+            "type": "string",
+            "description": "Account status",
+            "example": "Closed"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message",
+            "example": "We are sorry to see you go.Your account has been closed as per your request."
+          }
+        }
+      }
+    }
+  },
+  "x-aws-api-id": "s6joto1w93"
+}
